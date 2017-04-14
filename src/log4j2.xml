@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration package="main.java.solutions.infinity.task.test.dovgan" status="DEBUG">
+	<Properties>
+		<Property name="log-path">D:/Eclipse Projects/BowlingTestApp_v2/logs/</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="RollingFile" fileName="${log-path}/app.log" filePattern="${log-path}/app-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout>
+				<pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="1 KB" />
+			</Policies>
+			<DefaultRolloverStrategy max="4"/>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+
+		<Root level="trace">
+			<AppenderRef ref="RollingFile"/>
+		</Root>
+	</Loggers>
+</Configuration>

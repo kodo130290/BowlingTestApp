@@ -8,10 +8,16 @@ public enum Constants {
 		}
 	},
 	
-	NORESULTS{
+	NORESULTS {
 		@Override
 		 public String toString() {
 			return "";
 		}
+	};
+
+	public Integer value() {
+		return null;
 	}
+	
+
 }
