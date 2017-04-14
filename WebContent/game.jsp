@@ -26,13 +26,13 @@
         		<% } %>
         	</tr>
         	<tr>
-	            <c:forEach items="${resultsByFrames}" var="byFrame">                
-	                    <td>${byFrame.toString()}</td>               
-	            </c:forEach>
-            </tr>
-            <tr>
 	            <c:forEach items="${framesToDisplay}" var="pinsToDisplay">                
 	                    <td>${pinsToDisplay.toString()}</td>               
+	            </c:forEach>
+            </tr>
+        	<tr>
+	            <c:forEach items="${resultsByFrames}" var="byFrame">                
+	                    <td>${byFrame.toString()}</td>               
 	            </c:forEach>
             </tr>
         </table>
