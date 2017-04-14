@@ -1,23 +1,29 @@
 package main.java.solutions.infinity.task.test.dovgan.model.utils;
 
 public enum Constants {
-	NOPINS {
+	NOPINS (null){
 		@Override
 		 public String toString() {
 			return "";
 		}
 	},
 	
-	NORESULTS {
+	NORESULTS (null) {
 		@Override
 		 public String toString() {
 			return "";
 		}
 	};
+	
+	private Integer value;
 
-	public Integer value() {
-		return null;
-	}
+    private Constants(Integer value) {
+            this.value = value;
+    }
+    
+    public Integer value(){
+    	return value;
+    }
 	
 
 }
