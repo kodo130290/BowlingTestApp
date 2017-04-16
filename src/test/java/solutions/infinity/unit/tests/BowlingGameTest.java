@@ -6,68 +6,68 @@ import org.junit.*;
 
 public class BowlingGameTest extends TestCase{
 
-    GameController controller = GameController.getEntity();
+	GameController controller = GameController.getEntity();
 
     @Test
     public void testGutterGame(){
-        controller.initiateNewGame();
-        bulkSet(0, 20);
-        assertEquals( 0, controller.getTotalScore() );
+        String gameId = controller.initiateNewGame();
+        bulkSet(0, 20, gameId);
+        assertEquals( 0, controller.getTotalScore(gameId) );
     }
 
     @Test
     public void testRollSpare(){
-        controller.initiateNewGame();
-        controller.addRollToGame(7);
-        controller.addRollToGame(3);
-        controller.addRollToGame(1);
-        bulkSet(0, 17);
-        assertEquals( 12, controller.getTotalScore() );
+        String gameId = controller.initiateNewGame();
+        controller.addRollToGame(gameId, 7);
+        controller.addRollToGame(gameId, 3);
+        controller.addRollToGame(gameId, 1);
+        bulkSet(0, 17, gameId);
+        assertEquals( 12, controller.getTotalScore(gameId) );
     }
 
     @Test
     public void testRollStrike(){
-        controller.initiateNewGame();
-        controller.addRollToGame(10);
-        controller.addRollToGame(3);
-        controller.addRollToGame(1);
-        bulkSet(0, 16);
-        assertEquals( 18, controller.getTotalScore() );
+        String gameId = controller.initiateNewGame();
+        controller.addRollToGame(gameId, 10);
+        controller.addRollToGame(gameId, 3);
+        controller.addRollToGame(gameId, 1);
+        bulkSet(0, 16, gameId);
+        assertEquals( 18, controller.getTotalScore(gameId) );
     }
 
     @Test
     public void testBeforeLastFrame(){
-        controller.initiateNewGame();
-        bulkSet(0, 16);
-        controller.addRollToGame(10);
-        controller.addRollToGame(3);
-        controller.addRollToGame(1);
-        assertEquals( 18, controller.getTotalScore() );
+        String gameId = controller.initiateNewGame();
+        bulkSet(0, 16, gameId);
+        controller.addRollToGame(gameId, 10);
+        controller.addRollToGame(gameId, 3);
+        controller.addRollToGame(gameId, 1);
+        assertEquals( 18, controller.getTotalScore(gameId) );
 
     }
 
     @Test
     public void testLastFrame(){
-        controller.initiateNewGame();
-        bulkSet(0, 16);
-        controller.addRollToGame(7);
-        controller.addRollToGame(3);
-        controller.addRollToGame(5);
-        controller.addRollToGame(5);
-        controller.addRollToGame(10);
-        assertEquals( 35, controller.getTotalScore() );
+        String gameId = controller.initiateNewGame();
+        bulkSet(0, 16, gameId);
+        controller.addRollToGame(gameId, 7);
+        controller.addRollToGame(gameId, 3);
+        controller.addRollToGame(gameId, 5);
+        controller.addRollToGame(gameId, 5);
+        controller.addRollToGame(gameId, 10);
+        assertEquals( 35, controller.getTotalScore(gameId) );
     }
 
     @Test
     public void testPerfectGame(){
-        controller.initiateNewGame();
-        bulkSet(10, 12);
-        assertEquals( 300, controller.getTotalScore() );
+        String gameId = controller.initiateNewGame();
+        bulkSet(10, 12, gameId);
+        assertEquals( 300, controller.getTotalScore(gameId) );
     }
 
-    private void bulkSet(Integer pins, Integer rolls){
+    private void bulkSet(Integer pins, Integer rolls, String gameId){
         for (int i = 0; i < rolls ; i++){
-            controller.addRollToGame(pins);
+            controller.addRollToGame(gameId,pins);
         }
     }
 }
